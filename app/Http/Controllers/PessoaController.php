@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pessoa;
 
 class PessoaController extends Controller
 {
@@ -11,10 +12,12 @@ class PessoaController extends Controller
     }
 
     public function store(Request $request){
+
+    
         $pessoa = new Pessoa();
-        $pessoa->nome = $validatedData['nome'];
-        $pessoa->cpf = $validatedData['cpf'];
-        $pessoa->tel = $validatedData['tel'];
+        $pessoa->name = request('nome');
+        $pessoa->cpf = request('cpf');
+        $pessoa->tel = request('tel');
         $pessoa->save();
 
         // Retorno de sucesso
